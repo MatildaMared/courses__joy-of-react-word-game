@@ -11,7 +11,6 @@ const GuessInput = ({ handleSubmitGuess }) => {
 			return;
 		}
 
-		console.log(`Guess: ${guess}`);
 		handleSubmitGuess(guess);
 		setGuess("");
 	};
