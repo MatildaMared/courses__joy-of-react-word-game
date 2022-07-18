@@ -12,30 +12,16 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-	const [guess, setGuess] = useState("");
 	const [previousGuesses, setPreviousGuesses] = useState([]);
 
-	const makeGuess = (e) => {
-		e.preventDefault();
-
-		if (guess.length !== 5) {
-			alert("Please enter a 5-letter word.");
-			return;
-		}
-
-		console.log(`Guess: ${guess}`);
-		setGuess("");
+	const handleSubmitGuess = (guess) => {
 		setPreviousGuesses([...previousGuesses, guess]);
 	};
 
 	return (
 		<>
 			<PreviousGuesses guesses={previousGuesses} />
-			<GuessInput
-				guess={guess}
-				setGuess={setGuess}
-				makeGuess={makeGuess}
-			/>
+			<GuessInput handleSubmitGuess={handleSubmitGuess} />
 		</>
 	);
 }
