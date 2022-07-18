@@ -3,7 +3,9 @@ import React, { useState } from "react";
 const GuessInput = () => {
 	const [guess, setGuess] = useState("");
 
-	const makeGuess = () => {
+	const makeGuess = (e) => {
+		e.preventDefault();
+
 		if (guess.length !== 5) {
 			alert("Please enter a 5-letter word.");
 			return;
