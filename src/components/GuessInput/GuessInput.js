@@ -1,6 +1,13 @@
 import React, { useState } from "react";
+import HappyBanner from "../HappyBanner/HappyBanner";
+import SadBanner from "../SadBanner/SadBanner";
 
-const GuessInput = ({ handleSubmitGuess }) => {
+const GuessInput = ({
+	handleSubmitGuess,
+	gameStatus,
+	numOfGuesses,
+	answer,
+}) => {
 	const [guess, setGuess] = useState("");
 
 	const makeGuess = (e) => {
@@ -26,7 +33,12 @@ const GuessInput = ({ handleSubmitGuess }) => {
 				type="text"
 				value={guess}
 				onChange={(e) => setGuess(e.target.value.toUpperCase())}
+				disabled={gameStatus !== "running"}
 			/>
+			{gameStatus === "won" && (
+				<HappyBanner numOfGuesses={numOfGuesses} />
+			)}
+			{gameStatus === "lost" && <SadBanner answer={answer} />}
 		</form>
 	);
 };
