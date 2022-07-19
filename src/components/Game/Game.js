@@ -20,7 +20,7 @@ function Game() {
 
 		if (guess === answer) {
 			setGameStatus("won");
-		} else if (previousGuesses.length + 1 === NUM_OF_GUESSES_ALLOWED) {
+		} else if (previousGuesses.length + 1 >= NUM_OF_GUESSES_ALLOWED) {
 			setGameStatus("lost");
 		}
 	};
